@@ -21,5 +21,7 @@ test/CMakeFiles/LinkedListTest.dir/LinkedListTest.cpp.o: ../googletest/googletes
 test/CMakeFiles/LinkedListTest.dir/LinkedListTest.cpp.o: ../googletest/googletest/include/gtest/internal/gtest-port.h
 test/CMakeFiles/LinkedListTest.dir/LinkedListTest.cpp.o: ../googletest/googletest/include/gtest/internal/gtest-string.h
 test/CMakeFiles/LinkedListTest.dir/LinkedListTest.cpp.o: ../googletest/googletest/include/gtest/internal/gtest-type-util.h
+test/CMakeFiles/LinkedListTest.dir/LinkedListTest.cpp.o: ../LinkedList.hpp
 test/CMakeFiles/LinkedListTest.dir/LinkedListTest.cpp.o: ../test/LinkedListTest.cpp
+test/CMakeFiles/LinkedListTest.dir/LinkedListTest.cpp.o: ../test/LinkedListTest.hpp
 
