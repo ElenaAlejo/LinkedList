@@ -8,4 +8,6 @@ struct Node
 
 Node* createList(int size); 
 
+Node* initNode();
+
 #endif /* LINKED_LIST_HPP */

@@ -12,35 +12,34 @@ Node *createList(int size)
         return head;
     }
 
-    if (size > 0)
+    head = initNode();
+    next = initNode();
+
+    // Create rest of the nodes
+    for (int i = 1; i < size; i++)
     {
-        head = new Node();
-        head->data = 0;
-        if (size == 1)
+        if (i == 1)
         {
-            head->next = NULL;
-            return head;
+            head->next = next;
         }
         else
         {
-            // Creating second node
-            next = new Node();
-            next->data = 0;
-            head->next = next;
+            Node *aux = initNode();
+            next->next = aux;
+            next = aux;
         }
-    }
-
-    // Create rest of the nodes
-    for (int i = 2; i < size; i++)
-    {
-        Node *aux = new Node();
-        aux->data = 0;
-        next->next = aux;
-        next = aux;
     }
 
     // Last next is not defined
     next->next = NULL;
 
     return head;
+}
+
+Node *initNode()
+{
+    Node *node = new Node();
+    node->data = 0;
+    node->next = NULL;
+    return node;
 }
