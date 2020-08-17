@@ -2,6 +2,7 @@
 ## Exercise
 
 Create a method to initialize a LinkedList:
+The method will return the head node from the LinkedList.
 
 ```
 struct Node* createList(int size);
