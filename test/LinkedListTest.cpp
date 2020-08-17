@@ -9,7 +9,6 @@ TEST(LinkedListTest, createList){
 }
 
 TEST(LinkedListTest, createEmptyList){
-    
     const int SIZE = 0;
     Node* head = createList(SIZE);
     ASSERT_TRUE(head == NULL);
