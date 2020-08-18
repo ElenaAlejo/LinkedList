@@ -6,8 +6,10 @@ struct Node
     struct Node *next;
 };
 
-Node* createList(int size); 
+Node *createList(int size);
 
-Node* initNode();
+Node *initNode();
+
+void cleanMemory(Node *head);
 
 #endif /* LINKED_LIST_HPP */

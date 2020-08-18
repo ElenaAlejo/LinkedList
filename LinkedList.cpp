@@ -1,6 +1,9 @@
 #include "LinkedList.hpp"
 #include <stdio.h>
 #include <stdlib.h>
+#include <iostream>
+
+using namespace std;
 
 Node *createList(int size)
 {
@@ -14,32 +17,67 @@ Node *createList(int size)
 
     head = initNode();
     next = initNode();
-
-    // Create rest of the nodes
-    for (int i = 1; i < size; i++)
+    if (head && next)
     {
-        if (i == 1)
+        // Create rest of the nodes
+        for (int i = 1; i < size; i++)
         {
-            head->next = next;
+            if (i == 1)
+            {
+                head->next = next;
+            }
+            else
+            {
+                Node *aux = initNode();
+                if (aux)
+                {
+                    next->next = aux;
+                    next = aux;
+                }
+                else
+                {
+                    // As we couldn´t allocate, clean the memory
+                    cleanMemory(head);
+                }
+            }
         }
-        else
-        {
-            Node *aux = initNode();
-            next->next = aux;
-            next = aux;
-        }
-    }
 
-    // Last next is not defined
-    next->next = NULL;
+        // Last next is not defined
+        next->next = NULL;
+    }
+    else
+    {
+        // As we couldn´t allocate, clean the memory
+        cleanMemory(head);
+    }
 
     return head;
 }
 
 Node *initNode()
 {
-    Node *node = new Node();
-    node->data = 0;
-    node->next = NULL;
+    Node *node = NULL;
+    try
+    {
+        node = new Node();
+        node->data = 0;
+        node->next = NULL;
+    }
+    catch (std::bad_alloc &ba)
+    {
+        std::cerr << "Could not allocate memory: " << ba.what() << '\n';
+    }
+    
     return node;
+}
+
+void cleanMemory(Node *head)
+{
+
+    while (head)
+    {
+        Node *aux = head->next;
+        delete head;
+        head = aux;
+    }
 }
