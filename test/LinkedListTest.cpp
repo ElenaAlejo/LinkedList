@@ -50,7 +50,7 @@ TEST(LinkedListTest, CleanMemory){
 void validateLinkedList(Node* head, int size){
     int count = 0;
 
-    while(head != NULL && count <= size){
+    while(head && count <= size){
         count++;
         checkDefaultValue(head->data);
         head = head->next;
