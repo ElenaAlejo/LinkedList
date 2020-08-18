@@ -16,39 +16,35 @@ Node *createList(int size)
     }
 
     head = initNode();
-    next = initNode();
-    if (head && next)
+    next = head;
+    if (head)
     {
         // Create rest of the nodes
-        for (int i = 1; i < size; i++)
+        for (int i = 0; i < size - 1; i++)
         {
-            if (i == 1)
+            Node *aux = initNode();
+            if (aux)
             {
-                head->next = next;
+                next->next = aux;
+                next = aux;
             }
             else
             {
-                Node *aux = initNode();
-                if (aux)
-                {
-                    next->next = aux;
-                    next = aux;
-                }
-                else
-                {
-                    // As we couldn´t allocate, clean the memory
-                    cleanMemory(head);
-                }
+                // As we couldn´t allocate, clean the memory
+                cleanMemory(head);
+                throw std::runtime_error(std::string("Error when trying to allocate memory"));
             }
         }
 
         // Last next is not defined
         next->next = NULL;
+        next->data = 0;
     }
     else
     {
         // As we couldn´t allocate, clean the memory
         cleanMemory(head);
+        throw std::runtime_error(std::string("Error when trying to allocate memory"));
     }
 
     return head;
@@ -67,13 +63,12 @@ Node *initNode()
     {
         std::cerr << "Could not allocate memory: " << ba.what() << '\n';
     }
-    
+
     return node;
 }
 
 void cleanMemory(Node *head)
 {
-
     while (head)
     {
         Node *aux = head->next;
