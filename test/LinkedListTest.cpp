@@ -34,10 +34,10 @@ TEST(LinkedListTest, invalidValue){
 
 // This test is for check if upper boulandries are meet.
 // As it takes a long time to process I will not run it in Continuous basis.
-// TEST(LinkedListTest, MaxNumber){ 
-//     Node* head = createList(INT_MAX);
-//     validateLinkedList(head, INT_MAX);
-// }
+TEST(LinkedListTest, MaxNumber){ 
+    Node* head = createList(INT_MAX);
+    validateLinkedList(head, INT_MAX);
+}
 
 TEST(LinkedListTest, CleanMemory){
     const int SIZE = 6;
