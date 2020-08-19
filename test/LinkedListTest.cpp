@@ -39,13 +39,28 @@ TEST(LinkedListTest, MaxNumber){
     validateLinkedList(head, INT_MAX);
 }
 
+TEST(LinkedListTest, CleanMemory){
+    const int SIZE = 6;
+    Node* head = createList(SIZE);
+    validateLinkedList(head, SIZE);
+    cleanMemory(head);
+    ASSERT_NE(nullptr, head);
+}
+
 void validateLinkedList(Node* head, int size){
-    for(int i = 0; i < size; i++ ){
-        int currentData = head->data;
-        printf("Checking if %d is equals to %d \n", currentData, DEFAULT_VALUE);
-        GTEST_ASSERT_EQ(currentData, DEFAULT_VALUE);
+    int count = 0;
+
+    while(head && count <= size){
+        count++;
+        checkDefaultValue(head->data);
         head = head->next;
     }
-    
+
     ASSERT_TRUE(head == NULL);
+    ASSERT_EQ(size, count);
+}
+
+void checkDefaultValue(int currentData){
+    printf("Checking if %d is equals to %d \n", currentData, DEFAULT_VALUE);
+        GTEST_ASSERT_EQ(currentData, DEFAULT_VALUE);
 }
